@@ -1,0 +1,154 @@
+<html>
+  <head>
+    <!-- <link href="recommender/main.css" rel="stylesheet"> -->
+
+    <div class="topnav">
+      <a class="active" href="">Search</a>
+      <a href="/playlists/">Playlists</a>
+    </div>
+  </head>
+
+  <body>
+
+    <style>
+      /* Add a black background color to the top navigation */
+    .topnav {
+      /* background-color: #333;
+      overflow: hidden; */
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      text-align: center;
+    }
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    /* Change the color of links on hover */
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    /* Add a color to the active/current link */
+    .topnav a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #outer {
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+      transform: translate(0%, 10%);
+      padding-bottom: 10px;
+
+    }
+
+    #search {
+      margin: auto;
+      width: 50%;
+      border: 3px solid black;
+      margin-bottom: 30px;
+      padding: 10px;
+    }
+
+    body {
+      background-color: #eee;
+    }
+
+    footer{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      text-align: center;
+    }
+
+    </style>
+
+    <h1>Search Page</h1>
+    <div id="outer">
+      <div id="search">
+        <h3> Search By Artist or Album </h3>
+        <form method="GET" action="/search_results/">
+          <input type="text" name="textfield">
+
+          <select name="type">
+            <option value="artist">Artist</option>
+            <option value="album">Album</option>
+          </select>
+
+          <button type="submit">Find Recommendations</button>
+        </form>
+       </div>
+       <div id="search">
+        <h3>Search By Tag</h3>
+        <form method="GET" action="/tag_recommendation/">
+
+          <select name="t1">
+            {% for tag in tags %}
+                <option value="{{tag}}">{{tag}}</option>
+            {% endfor %}
+          </select>
+           <br />
+          <select name="t2">
+            {% for tag in tags %}
+                <option value="{{tag}}">{{tag}}</option>
+            {% endfor %}
+          </select>
+           <br />
+          <select name="t3">
+            {% for tag in tags %}
+                <option value="{{tag}}">{{tag}}</option>
+            {% endfor %}
+          </select>
+          <br />
+          <button type="submit">Search By Tag</button>
+        </form>
+       </div>
+       <div id="search">
+        <h3>Update Album Name</h3>
+        <form method="GET" action="">
+
+          <select name="type">
+            {% for album in albums %}
+                <option value="{{album}}_u">{{album}}</option>
+            {% endfor %}
+          </select>
+
+          <input type="text" name="new_name">
+          <button type="submit">Change Name</button>
+        </form>
+      </div>
+      <div id="search">
+        <h3>Delete Name</h3>
+        <form method="GET" action="">
+          <select name="type">
+            {% for album in albums %}
+                <option value="{{album}}_d">{{album}}</option>
+            {% endfor %}
+          </select>
+
+          <button type="submit">Delete Artist</button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <p> © Kush Patel, Nikhil Parmar, and Cameron Palte. 2019. All Rights Reserved. </p>
+  </footer>
+
+</html>
